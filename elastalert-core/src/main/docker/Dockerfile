@@ -29,11 +29,13 @@ RUN cd $ELASTALERT_HOME \
     && chmod +x $ELASTALERT_HOME/run.sh \
     && ln -s $ELASTALERT_HOME/run.sh $HOME/run.sh \
     && mkdir $ELASTALERT_HOME/rules \
-    && pip install -r requirements.txt \
-    && python setup.py install \
-    && groupadd -r elastalert -g 1000 \
-    && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
-    && chown -R elastalert:elastalert $HOME
+    && pip install --user -r requirements.txt \
+    && python setup.py install --user \
+    && fix-permissions /opt/app-root
+
+    #&& groupadd -r elastalert -g 1000 \
+     #   && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
+      #  && chown -R elastalert:elastalert $HOME \
 
 # switch to elastalert
 USER 1000
