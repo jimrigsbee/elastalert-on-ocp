@@ -7,7 +7,7 @@ timeframe:
 filter:
 - query:
     query_string:
-      query: "Hello OpenShift!"
+      query: "Servicing request."
 alert:
 - "email"
 email:
