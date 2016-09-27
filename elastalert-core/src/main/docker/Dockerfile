@@ -35,7 +35,7 @@ RUN cd $ELASTALERT_HOME \
     && python setup.py install --user \
     && groupadd -r elastalert -g 1000 \
     && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
-    && cp -r /etc/skel/. $HOME
+    && cp -r /etc/skel/. $HOME \
     && chown -R elastalert:elastalert $HOME \
     && fix-permissions /opt/app-root
 
