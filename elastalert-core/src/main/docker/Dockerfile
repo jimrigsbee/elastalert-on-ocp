@@ -11,7 +11,8 @@ RUN yum repolist --disablerepo=* && \
     yum-config-manager --enable rhel-7-server-ose-3.2-rpms > /dev/null
 
 RUN yum install -y python-devel python-setuptools \
-    && easy_install -U pip
+    && easy_install -U pip \
+    && pip install --upgrade pip
 
 # Download ElastAlert
 RUN cd $HOME \
