@@ -3,6 +3,7 @@ FROM registry.access.redhat.com/rhscl/python-27-rhel7
 ENV ELASTALERT_VERSION 0.0.99
 ENV ELASTALERT_HOME $HOME/elastalert-$ELASTALERT_VERSION
 
+# Config yum repos
 USER root
 RUN yum repolist --disablerepo=* && \
     yum-config-manager --disable \* > /dev/null && \
@@ -10,6 +11,7 @@ RUN yum repolist --disablerepo=* && \
     yum-config-manager --enable rhel-7-server-extras-rpms > /dev/null && \
     yum-config-manager --enable rhel-7-server-ose-3.2-rpms > /dev/null
 
+# Install python dev tools
 RUN yum install -y python-devel python-setuptools \
     && easy_install -U pip \
     && pip install --upgrade pip
@@ -33,6 +35,7 @@ RUN cd $ELASTALERT_HOME \
     && python setup.py install --user \
     && groupadd -r elastalert -g 1000 \
     && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
+    && cp -r /etc/skel/. $HOME
     && chown -R elastalert:elastalert $HOME \
     && fix-permissions /opt/app-root
 
