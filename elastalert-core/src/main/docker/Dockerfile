@@ -31,11 +31,10 @@ RUN cd $ELASTALERT_HOME \
     && mkdir $ELASTALERT_HOME/rules \
     && pip install --user -r requirements.txt \
     && python setup.py install --user \
+    && groupadd -r elastalert -g 1000 \
+    && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
+    && chown -R elastalert:elastalert $HOME \
     && fix-permissions /opt/app-root
-
-    #&& groupadd -r elastalert -g 1000 \
-     #   && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
-      #  && chown -R elastalert:elastalert $HOME \
 
 # switch to elastalert
 USER 1000
