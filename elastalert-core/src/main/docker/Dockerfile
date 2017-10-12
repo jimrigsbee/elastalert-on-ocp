@@ -38,7 +38,7 @@ RUN cd $ELASTALERT_HOME \
     && useradd -u 1000 -r -g elastalert -m -d $HOME -s /sbin/nologin -c "elastalert user" elastalert \
     && cp -r /etc/skel/. $HOME \
     && chown -R elastalert:elastalert $HOME \
-    && fix-permissions /opt/app-root
+    && chmod -R 755 /opt/app-root
 
 # switch to elastalert
 USER 1000
