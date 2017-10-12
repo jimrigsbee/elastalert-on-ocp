@@ -1,8 +1,8 @@
 FROM registry.access.redhat.com/rhel7.3 
 
+ENV HOME /opt/app-root
 ENV ELASTALERT_VERSION 0.0.99
 ENV ELASTALERT_HOME $HOME/elastalert-$ELASTALERT_VERSION
-ENV HOME /opt/app-root
 
 # Config yum repos
 USER root
