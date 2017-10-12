@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhscl/python-27-rhel7
+FROM rhel7.3 
 
 ENV ELASTALERT_VERSION 0.0.99
 ENV ELASTALERT_HOME $HOME/elastalert-$ELASTALERT_VERSION
@@ -8,8 +8,7 @@ USER root
 RUN yum repolist --disablerepo=* && \
     yum-config-manager --disable \* > /dev/null && \
     yum-config-manager --enable rhel-7-server-rpms > /dev/null && \
-    yum-config-manager --enable rhel-7-server-extras-rpms > /dev/null && \
-    yum-config-manager --enable rhel-7-server-ose-3.2-rpms > /dev/null
+    yum-config-manager --enable rhel-7-server-extras-rpms > /dev/null 
 
 # Install python dev tools
 RUN yum install -y python-devel python-setuptools \
