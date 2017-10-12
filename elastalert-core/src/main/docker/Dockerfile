@@ -1,4 +1,4 @@
-FROM rhel7.3 
+FROM registry.access.redhat.com/rhel7.3 
 
 ENV ELASTALERT_VERSION 0.0.99
 ENV ELASTALERT_HOME $HOME/elastalert-$ELASTALERT_VERSION
