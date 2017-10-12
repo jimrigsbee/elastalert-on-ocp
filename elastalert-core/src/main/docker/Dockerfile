@@ -18,7 +18,7 @@ RUN yum install -y python-devel python-setuptools \
 # Download ElastAlert
 RUN cd $HOME \
     && curl -L https://github.com/Yelp/elastalert/archive/v$ELASTALERT_VERSION.zip -o elastalert-v$ELASTALERT_VERSION.zip \
-    && tar -xf elastalert-v$ELASTALERT_VERSION.zip \
+    && unzip elastalert-v$ELASTALERT_VERSION.zip \
     && rm -f elastalert-v$ELASTALERT_VERSION.zip
 
 # Copy config
