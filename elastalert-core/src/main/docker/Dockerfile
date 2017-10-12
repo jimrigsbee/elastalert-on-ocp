@@ -11,7 +11,7 @@ RUN yum repolist --disablerepo=* && \
     yum-config-manager --enable rhel-7-server-extras-rpms > /dev/null 
 
 # Install python dev tools
-RUN yum install -y python-devel python-setuptools \
+RUN yum install -y python-devel python-setuptools unzip \
     && easy_install -U pip \
     && pip install --upgrade pip
 
