@@ -14,8 +14,7 @@ RUN yum repolist --disablerepo=* && \
 # Install python dev tools
 RUN yum install -y python-devel python-setuptools unzip \
     && easy_install -U pip \
-    && pip install --upgrade pip \
-    && easy_install -U setuptools
+    && pip install --upgrade pip
 
 # Download ElastAlert
 RUN mkdir -p $HOME && cd $HOME \
